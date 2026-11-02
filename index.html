@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#11121a">
+  <title>Chess Party</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><div class="brand-mark">♞</div><div><div class="brand">CHESS PARTY</div><div class="tagline">THINK FAST. PLAY SMART.</div></div><span class="live-pill"><i></i> LIVE MULTIPLAYER</span></header>
+    <section id="home" class="panel hero">
+      <div class="eyebrow">TEAM CHESS · WINNER STAYS</div>
+      <h1>Your next move<br><em>starts here.</em></h1>
+      <p class="muted">Create a private room, invite up to seven friends, and battle for the top spot.</p>
+      <div class="home-grid">
+        <form id="create-form" class="subpanel">
+          <h2>Create a room</h2><label>Your name<input id="host-name" maxlength="18" placeholder="e.g. KnightRider" required></label>
+          <label>Team name<input id="host-team" maxlength="18" placeholder="e.g. Checkmates"></label>
+          <label>Tournament length<select id="duration"><option value="10">10 minutes</option><option value="15" selected>15 minutes</option></select></label>
+          <button class="primary" type="submit">Create room <span>→</span></button>
+        </form>
+        <form id="join-form" class="subpanel">
+          <h2>Join a room</h2><label>Your name<input id="join-name" maxlength="18" placeholder="e.g. QueenBee" required></label>
+          <label>6-character room code<input id="room-code" maxlength="6" placeholder="ABC123" class="code-input" required></label>
+          <button class="secondary" type="submit">Join game <span>→</span></button>
+        </form>
+      </div>
+      <div class="feature-row"><span>♜ Standard chess rules</span><span>◷ 3:00 + 2 sec</span><span>♙ Teams of two</span><span>✦ 2–8 players</span></div>
+    </section>
+    <section id="room" class="hidden">
+      <div class="room-head panel"><div><div class="eyebrow">PRIVATE GAME ROOM</div><h2>Room <strong id="room-code-label">------</strong></h2><p class="muted" id="room-status">Waiting for players</p></div><button id="copy-code" class="ghost">Copy code</button></div>
+      <div class="layout">
+        <section class="panel">
+          <div class="section-head"><h2>Players & teams</h2><span id="player-count" class="count">0 / 8</span></div>
+          <div id="teams-list" class="teams-list"></div>
+          <div id="lobby-controls" class="controls"><button id="ready-btn" class="secondary">I'm ready</button><button id="start-btn" class="primary hidden">Start tournament →</button></div>
+          <p class="hint">Competitive team play requires 4, 6 or 8 players. Teammates are assigned automatically in pairs.</p>
+        </section>
+        <section class="panel leaderboard-panel"><div class="section-head"><h2>Leaderboard</h2><span class="eyebrow">LIVE</span></div><div id="leaderboard"></div></section>
+      </div>
+      <section id="match-panel" class="panel hidden">
+        <div class="section-head"><div><div class="eyebrow">LIVE MATCH</div><h2 id="match-title">Chess arena</h2></div><span id="match-state" class="live-pill"><i></i> IN PLAY</span></div>
+        <div class="match-layout">
+          <div class="board-wrap"><div class="player-strip" id="black-player"></div><div id="board" class="board" aria-label="Chessboard"></div><div class="player-strip" id="white-player"></div></div>
+          <aside class="match-side"><div class="clock-card" id="black-clock">03:00</div><div class="turn-label" id="turn-label">White to move</div><div class="clock-card active-clock" id="white-clock">03:00</div><button id="resign-btn" class="danger">Resign match</button><div id="match-result" class="result-card hidden"></div><div class="hint">Tap or click one of your pieces, then a highlighted square. Promotion defaults to a queen.</div></aside>
+        </div>
+      </section>
+      <section id="history-panel" class="panel"><div class="section-head"><h2>Recent matches</h2></div><div id="history"></div></section>
+    </section>
+    <div id="toast" class="toast hidden"></div>
+    <footer>CHESS PARTY <span>·</span> A private room game for friends</footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
